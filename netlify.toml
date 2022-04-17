@@ -1,4 +1,4 @@
 [[redirects]]
   from = "/api/*"
-  to = "https://api.zeptomail.com/v1.1"
+  to = "https://api.zeptomail.com/v1.1/email"
   status = 200
