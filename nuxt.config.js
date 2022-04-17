@@ -55,12 +55,12 @@ export default {
   },
 
   // Proxy configuration
-  proxy: {
-    '/api/': {
-      target: process.env.AUTH_BASE_URL || 'https://api.zeptomail.com/v1.1',
-      pathRewrite: { '^/api/': '' },
-    },
-  },
+  // proxy: {
+  //   '/api/': {
+  //     target: process.env.AUTH_BASE_URL || 'https://api.zeptomail.com/v1.1',
+  //     pathRewrite: { '^/api/': '' },
+  //   },
+  // },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
