@@ -106,7 +106,7 @@
           </div>
         </div>
         <!-- Send -->
-        <div class="flex items-center justify-center w-full">
+        <div class="flex items-center mt-8 justify-center w-full">
           <button
             :disabled="invalid"
             :class="btnClass(invalid)"
