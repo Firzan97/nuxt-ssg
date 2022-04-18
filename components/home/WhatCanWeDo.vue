@@ -12,7 +12,7 @@
       >
         <div
           v-for="s in services"
-          :key="s.title"
+          :key="s.id"
           class="flex flex-col items-center p-6 space-y-3 text-center rounded-xl dark:bg-gray-800"
         >
           <div class="hidden sm:block lg:w-4/5 relative">

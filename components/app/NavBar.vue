@@ -3,7 +3,9 @@
     <div
       class="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8"
     >
+      <!-- Bigger Screen -->
       <div class="relative flex items-center justify-between">
+        <!-- Image -->
         <a href="https://enlightyx.io/" title="Enlightyx">
           <img
             class="site-logo"
@@ -13,29 +15,17 @@
             data-pagespeed-url-hash="1939597098"
         /></a>
         <ul class="flex items-center hidden space-x-8 lg:flex">
-          <li>
+          <li v-for="n in navItems" :key="n.id">
             <a
-              href="/"
+              v-if="!n.items"
               aria-label="Our product"
               title="Our product"
-              class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
-              >Home</a
+              class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-indigo-800"
+              @click="redirect(n)"
+              >{{ n.name }}</a
             >
-          </li>
-          <li>
-            <common-menu-select :menu-items="productsItems" />
-          </li>
-          <li>
-            <common-menu-select :menu-items="offeringsItems" />
-          </li>
-          <li>
-            <a
-              aria-label="Our product"
-              title="Our product"
-              class="cursor-pointer font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
-              @click="$router.push('/contact')"
-              >Contact</a
-            >
+            <!-- Dropdown -->
+            <common-menu-select v-else :menu-items="n" />
           </li>
         </ul>
         <div class="lg:hidden">
@@ -64,6 +54,7 @@
             <div v-if="isMenuOpen" class="absolute top-0 left-0 w-full z-40">
               <div class="p-5 bg-white border rounded shadow-sm">
                 <div class="flex items-center justify-between mb-4">
+                  <!--Logo -->
                   <div>
                     <a href="https://enlightyx.io/" title="Enlightyx">
                       <img
@@ -74,6 +65,7 @@
                         data-pagespeed-url-hash="1939597098"
                     /></a>
                   </div>
+                  <!-- Close button -->
                   <div>
                     <button
                       aria-label="Close Menu"
@@ -90,43 +82,28 @@
                     </button>
                   </div>
                 </div>
+                <!-- Smaller screen -->
                 <nav>
                   <ul class="space-y-4">
-                    <li>
+                    <li v-for="n in navItems" :key="n.id">
                       <a
                         aria-label="Our product"
                         title="Our product"
-                        class="cursor-pointer font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                        @click="$router.push('/')"
-                        >Home</a
+                        class="cursor-pointer font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-indigo-800"
+                        @click="redirect(n)"
+                        >{{ n.name }}</a
                       >
-                    </li>
-                    <li>
-                      <a
-                        aria-label="Our product"
-                        title="Our product"
-                        class="cursor-pointer font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                        @click="$router.push('/')"
-                        >Products</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        aria-label="Product pricing"
-                        title="Product pricing"
-                        class="cursor-pointer font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                        @click="$router.push('/')"
-                        >Offering</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        aria-label="About us"
-                        title="About us"
-                        class="cursor-pointer font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                        @click="$router.push('/contact')"
-                        >Contact Us</a
-                      >
+                      <ul v-if="!!n.items" class="ml-4">
+                        <li v-for="i in n.items" :key="i.name" class="pt-3">
+                          <a
+                            aria-label="Our product"
+                            title="Our product"
+                            class="cursor-pointer font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-indigo-800"
+                            @click="redirect(i)"
+                            >{{ i.name }}</a
+                          >
+                        </li>
+                      </ul>
                     </li>
                   </ul>
                 </nav>
@@ -144,48 +121,69 @@ export default {
     return {
       isMenuOpen: false,
       showItem: false,
-      offeringsItems: {
-        name: 'Offerings',
-        to: '/',
-        isWebsite: false,
-
-        items: [
-          {
-            name: 'Software Development',
-            isWebsite: false,
-            to: '/services/software-development',
-          },
-          {
-            name: 'Growth Strategy',
-            isWebsite: false,
-            to: '/services/growth-strategy',
-          },
-        ],
-      },
-      productsItems: {
-        name: 'Products',
-        to: '/',
-        isWebsite: false,
-        items: [
-          { name: 'Cheqyn', isWebsite: true, to: 'https://cheqyn.me/' },
-          {
-            name: 'CCTV',
-            isWebsite: false,
-            to: '/vigilex/sign-up',
-            children: [
-              {
-                name: 'Thermal Screening',
-                isWebsite: false,
-                to: '/vigilex/thermal-screening',
-              },
-              { name: 'Security', isWebsite: false, to: '/vigilex/security' },
-              { name: 'Sign Up', isWebsite: false, to: '/vigilex/sign-up' },
-            ],
-          },
-          { name: 'Smart City App', isWebsite: false, to: '/smart-city' },
-        ],
-      },
+      navItems: [
+        {
+          id: 1,
+          name: 'Home',
+          isWebsite: false,
+          to: '/',
+        },
+        {
+          id: 2,
+          name: 'Products',
+          to: '/',
+          isWebsite: false,
+          items: [
+            { name: 'Cheqyn', isWebsite: true, to: 'https://cheqyn.me/' },
+            {
+              name: 'CCTV',
+              isWebsite: false,
+              to: '/vigilex/sign-up',
+              items: [
+                {
+                  name: 'Thermal Screening',
+                  isWebsite: false,
+                  to: '/vigilex/thermal-screening',
+                },
+                { name: 'Security', isWebsite: false, to: '/vigilex/security' },
+                { name: 'Sign Up', isWebsite: false, to: '/vigilex/sign-up' },
+              ],
+            },
+            { name: 'Smart City App', isWebsite: false, to: '/smart-city' },
+          ],
+        },
+        {
+          id: 3,
+          name: 'Offerings',
+          to: '/',
+          isWebsite: false,
+          items: [
+            {
+              name: 'Software Development',
+              isWebsite: false,
+              to: '/services/software-development',
+            },
+            {
+              name: 'Growth Strategy',
+              isWebsite: false,
+              to: '/services/growth-strategy',
+            },
+          ],
+        },
+        {
+          id: 4,
+          name: 'Contact',
+          isWebsite: false,
+          to: '/contact',
+        },
+      ],
     }
+  },
+  methods: {
+    redirect(i) {
+      if (i.isWebsite) window.location.href = i.to
+      else this.$router.push(i.to)
+    },
   },
 }
 </script>

@@ -8,7 +8,7 @@
       <button
         id="options-menu"
         type="button"
-        class="text-gray-100 hover:text-teal-accent-400 shadow-sm flex items-center justify-center w-full rounded py-2"
+        class="text-gray-100 hover:text-indigo-500 shadow-sm flex items-center justify-center w-full rounded py-2"
         @click="redirect(menuItems)"
       >
         {{ menuItems.name }}
@@ -18,7 +18,7 @@
       <div
         v-if="showItem"
         ref="openModal"
-        class="origin-top-right absolute right-0 mt-2 w-56 rounded shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5"
+        class="origin-top-right absolute right-0 mt-2 w-56 rounded shadow-lg bg-white dark:bg-gray-500 ring-1 ring-black ring-opacity-5"
       >
         <div
           class="py-1 cursor-pointer"
@@ -29,7 +29,7 @@
           <a
             v-for="i in menuItems.items"
             :key="i.name"
-            class="block block px-4 py-2 text-md text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-100 dark:hover:text-white dark:hover:bg-gray-600"
+            class="block block px-4 py-2 text-md text-gray-700 hover:bg-indigo-500 hover:text-white dark:text-gray-100 dark:hover:text-white dark:hover:bg-indigo-500"
             role="menuitem"
             @click="redirect(i)"
           >
