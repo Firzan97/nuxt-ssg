@@ -1,8 +1,8 @@
 <template>
   <div
+    class="relative inline-block text-left z-30"
     @mouseenter="showItem = true"
     @mouseleave="showItem = false"
-    class="relative inline-block text-left z-30"
   >
     <div>
       <button
@@ -28,7 +28,7 @@
         >
           <a
             v-for="i in menuItems.items"
-            :key="i"
+            :key="i.name"
             class="block block px-4 py-2 text-md text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-100 dark:hover:text-white dark:hover:bg-gray-600"
             role="menuitem"
             @click="redirect(i)"
@@ -57,8 +57,6 @@ export default {
     redirect(i) {
       if (i.isWebsite) window.location.href = i.to
       else this.$router.push(i.to)
-      // this.showItem = !this.showItem
-      this.$store.commit('setMenuShow')
     },
   },
 }

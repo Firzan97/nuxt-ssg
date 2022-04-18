@@ -15,25 +15,21 @@
               <li>
                 <a
                   class="cursor-pointer text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                  @click="
-                    window.location.href = 'https://enlightyx.io/?page_id=670'
-                  "
+                  @click="redirect('https://cheqyn.me/free-trial')"
                   >cheqyn</a
                 >
               </li>
               <li>
                 <a
                   class="cursor-pointer text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                  @click="
-                    window.location.href = 'https://enlightyx.io/?page_id=831'
-                  "
+                  @click="redirect('https://cheqyn.me/privacy-policy')"
                   >cheqyn Privacy Policy</a
                 >
               </li>
               <li>
                 <a
                   class="cursor-pointer text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                  @click="$router.push('/contact-us')"
+                  @click="$router.push('/contact')"
                   >Contact Us</a
                 >
               </li>
@@ -145,6 +141,11 @@
 export default {
   data() {
     return { showItem: false }
+  },
+  methods: {
+    redirect(link) {
+      window.location.href = link
+    },
   },
 }
 </script>

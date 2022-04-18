@@ -15,8 +15,8 @@
           :key="s.title"
           class="flex flex-col items-center p-6 space-y-3 text-center rounded-xl dark:bg-gray-800"
         >
-          <div class="hidden sm:block sm:w-1/3 lg:w-4/5 relative">
-            <img :src="s.image" class="max-w-xs md:max-w-sm m-auto" />
+          <div class="hidden sm:block lg:w-4/5 relative">
+            <img :src="s.image" class="max-w-xl md:max-w-sm m-auto" />
           </div>
 
           <h1

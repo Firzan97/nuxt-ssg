@@ -168,7 +168,20 @@ export default {
         isWebsite: false,
         items: [
           { name: 'Cheqyn', isWebsite: true, to: 'https://cheqyn.me/' },
-          { name: 'CCTV', isWebsite: false, to: '/vigilex/sign-up' },
+          {
+            name: 'CCTV',
+            isWebsite: false,
+            to: '/vigilex/sign-up',
+            children: [
+              {
+                name: 'Thermal Screening',
+                isWebsite: false,
+                to: '/vigilex/thermal-screening',
+              },
+              { name: 'Security', isWebsite: false, to: '/vigilex/security' },
+              { name: 'Sign Up', isWebsite: false, to: '/vigilex/sign-up' },
+            ],
+          },
           { name: 'Smart City App', isWebsite: false, to: '/smart-city' },
         ],
       },

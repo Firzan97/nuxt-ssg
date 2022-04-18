@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="relative bg-indigo-700 mx-auto flex flex-col items-center pt-12 sm:pt-24 pb-24 sm:pb-32 md:pb-48 xl:pb-52"
+      class="relative bg-indigo-700 mx-auto flex flex-col items-center pt-12 pb-52"
     >
       <svg
         class="mr-2 lg:mr-12 mt-2 lg:mt-12 absolute right-0 top-0"
@@ -348,7 +348,8 @@
           </g>
         </g>
       </svg>
-      <div class="w-11/12 sm:w-2/3 mb-5 sm:mb-10">
+      <div class="w-11/12 sm:w-2/3 mb-5 sm:mb-10 mt-20">
+        <!-- Title -->
         <h1
           class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-center text-white font-bold leading-tight"
         >
@@ -358,21 +359,22 @@
           with Today's Data
         </p>
       </div>
+      <!-- Learn More -->
       <div
         class="cursor-pointer flex justify-center items-center mb-10 sm:mb-20 z-30"
       >
         <button
           class="hover:text-white hover:bg-transparent hover:border-white border bg-white transition duration-150 ease-in-out focus:outline-none rounded text-indigo-700 px-4 sm:px-8 py-1 sm:py-3 text-sm"
-          @click="$router.push('#feature')"
+          @click="scroll"
         >
           Learn More
         </button>
       </div>
     </div>
     <div
-      class="container mx-auto flex justify-center md:-mt-48 sm:-mt-40 xl:-mt-80"
+      class="container mx-auto flex justify-center md:-mt-72 sm:-mt-40 xl:-mt-80"
     >
-      <div class="relative sm:w-2/3 w-11/12">
+      <div class="relative sm:w-3/3 lg:w-2/3 w-11/12">
         <img src="/home-logo.png" alt="" class="absolute" />
       </div>
     </div>
@@ -380,7 +382,13 @@
 </template>
 
 <script>
-export default {}
+export default {
+  methods: {
+    scroll() {
+      document.getElementById('feature').scrollIntoView({ behavior: 'smooth' })
+    },
+  },
+}
 </script>
 
 <style></style>

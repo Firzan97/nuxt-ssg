@@ -1,6 +1,7 @@
 <template>
-  <div class="container rounded-lg mx-auto mt-96">
-    <div class="pt-96">
+  <div class="container rounded-lg mx-auto sm:mt-96">
+    <div class="pt-0 lg:pt-20 xl:pt-80">
+      <!-- Feature -->
       <common-feature-hero
         v-for="(i, index) in homeFeature"
         :key="i.title"

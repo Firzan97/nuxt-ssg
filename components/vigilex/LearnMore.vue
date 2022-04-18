@@ -14,7 +14,7 @@
           <span class="text-blue-400 underline">RM 49*</span>
         </h1>
         <button
-          class="w-full px-4 py-2 mt-4 text-sm font-medium text-white uppercase transition-colors duration-200 transform bg-indigo-700 rounded-md lg:w-auto hover:bg-indigo-600 focus:outline-none focus:bg-indigo-600"
+          class="w-1/3 px-4 py-2 mt-4 text-sm font-medium text-white uppercase transition-colors duration-200 transform bg-indigo-700 rounded-md lg:w-1/3 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-600"
         >
           Learn More
         </button>

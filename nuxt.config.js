@@ -32,7 +32,7 @@ export default {
   css: ['@/assets/css/style.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/plugins/axios'],
+  plugins: ['@/plugins/axios', '@/plugins/validate'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -48,20 +48,26 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: ['@nuxt/content', '@nuxtjs/axios'],
 
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
+  // Axios
   axios: {
-    prefix: '/api',
-    proxy: true,
+    baseURL: 'https://bj5zsapo3j.execute-api.ap-southeast-1.amazonaws.com',
   },
 
-  // Proxy configuration
-  // proxy: {
-  //   '/api/': {
-  //     target: process.env.AUTH_BASE_URL || 'https://api.zeptomail.com/v1.1',
-  //     pathRewrite: { '^/api/': '' },
-  //   },
-  // },
-
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    transpile: ['vee-validate/dist/rules'],
+    extend(config) {
+      config.performance.hints = false
+    },
+  },
+
+  // ENV
+  env: {
+    DEFAULT_SENDER_MAIL:
+      process.env.DEFAULT_SENDER_MAIL || 'noreply@enlightyx.io',
+    DEFAULT_SENDER_NAME: process.env.DEFAULT_SENDER_NAME || 'Enlightyx',
+    ZOHO_KEY:
+      process.env.ZOHO_KEY ||
+      'wSsVR60g/B/1B6ssmzekJOw4nQ8EVlv3HBh+i1GjuH79T/yR8Mc6kxHHU1X2HPMWFGdhHDMb9rMvmUoAgzpdiN4vzl8IWyiF9mqRe1U4J3x17qnvhDzIV29bkxuIJYMNxghqnWlnEc4q+g==',
+  },
 }
