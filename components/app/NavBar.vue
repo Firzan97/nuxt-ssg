@@ -20,7 +20,7 @@
               v-if="!n.items"
               aria-label="Our product"
               title="Our product"
-              class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-indigo-800"
+              class="cursor-pointer font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-indigo-800"
               @click="redirect(n)"
               >{{ n.name }}</a
             >
